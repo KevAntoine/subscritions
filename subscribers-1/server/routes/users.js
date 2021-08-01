@@ -1,19 +1,13 @@
+const { registerUser } = require("../controllers/userController");
+const User = require("../models/User");
 var express = require("express");
 var router = express.Router();
 
-/* GET users listing. */
-router.get("/", function (req, res, next) {
-  res.send("respond with a resource");
+router.get("/", async (req, res) => {
+  const subscribers = await User.find({});
+  res.status(200).json(subscribers);
 });
-router.post("/register", function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  console.log(req.body);
-  res.header({ token: "some token" });
-  res.send("respond with a resource");
-});
+router.post("/register", registerUser, function (req, res, next) {});
 
 module.exports = router;
+

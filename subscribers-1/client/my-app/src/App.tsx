@@ -17,12 +17,14 @@ import axios from "axios";
 interface State {
   name?: string;
   email?: string;
+  password?: string;
 }
 
 type ActionType = {
   type: "REGISTER";
   name: string;
   email: string;
+  password?: string;
 };
 
 type useAppStateType = ReturnType<typeof useAppContext>;
@@ -30,6 +32,7 @@ type useAppStateType = ReturnType<typeof useAppContext>;
 const defaultState: State = {
   name: "guest",
   email: "mail@server.com",
+  password: "Password55"
 };
 
 const appContext = createContext<useAppStateType>({
@@ -49,6 +52,7 @@ function useAppContext(initState: State): {
             ...state,
             name: action.name,
             email: action.email,
+            password: action.password,
           };
         default:
           return defaultState;
@@ -61,6 +65,7 @@ function useAppContext(initState: State): {
     let body = {
       name: data.name,
       email: data.email,
+      password: data.password
     };
     let response = axios.post("http://localhost:4040/users/register", body, {
       headers: { "Content-Type": "application/json" },
@@ -72,6 +77,7 @@ function useAppContext(initState: State): {
           type: "REGISTER",
           name: data.name,
           email: data.email,
+          password: data.password
         });
       } else {
         console.log(result);
@@ -136,15 +142,10 @@ function Home() {
   );
 }
 
-type Subscriber = {
-  name: string;
-  email: string;
-};
-
 function Register() {
   const userRegister = useAppRegister();
-  const { register, handleSubmit } = useForm<Subscriber>();
-  const onSubmit: SubmitHandler<Subscriber> = (data) => userRegister(data);
+  const { register, handleSubmit } = useForm<State>();
+const onSubmit: SubmitHandler<State> = (data) => userRegister({...data,password:"welcome"});
 
   return (
     <div className="App-header">
