@@ -1,0 +1,34 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the home page.
+// -----------------------------------------------------------------------------
+.App {
+    position: relative;
+    text-align: center;
+    color: rgba(32, 32, 32, 0.76);
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+
+    &-header {
+        flex-basis: auto;
+    }
+    &-logo {
+        max-width: 500px;
+        max-height: 500px;
+    }
+
+    &-lead {
+        position: absolute;
+        top: 310px;
+        font-size: larger;
+
+            }
+
+    &-link {
+        color: chocolate;
+        &:hover {
+            color: darkcyan;
+        }
+    }
+}

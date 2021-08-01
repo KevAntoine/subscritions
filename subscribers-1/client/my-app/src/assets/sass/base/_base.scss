@@ -1,0 +1,82 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+/**
+ * Set up a decent box model on the root element
+ */
+html {
+    box-sizing: border-box;
+}
+
+/**
+ * Make all elements from the DOM inherit from the parent box-sizing
+ * Since `*` has a specificity of 0, it does not override the `html` value
+ * making all elements inheriting from the root box-sizing value
+ * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+/**
+ * Basic styles for links
+ */
+a {
+    color: $brand-color;
+    text-decoration: none;
+
+    @include on-event {
+        color: $text-color;
+        text-decoration: underline;
+    }
+}
+
+body {
+    min-height: 100vh;
+    font-size: 1.5rem;
+    background-color: #332e2ecb;
+}
+
+.main-container div {
+    background: rgb(32, 27, 27);
+    border-radius: 30px;
+    width: 150px;
+    height: 150px;
+}
+
+.refresh {
+    padding: 10px;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    width: 20px;
+    height: 20px;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.responsive {
+    // Apply styling to mobile and upwards
+    @include mq($from: mobile) {
+        color: rgba(83, 38, 38, 0.671);
+    }
+    // Apply styling up to devices smaller than tablets (exclude tablets)
+    @include mq($until: tablet) {
+        color: rgba(68, 68, 143, 0.705);
+    }
+    // Same thing, in landscape orientation
+    @include mq($until: tablet, $and: '(orientation: landscape)') {
+        color: hotpink;
+    }
+    // Apply styling to tablets up to desktop (exclude desktop)
+    @include mq(tablet, desktop) {
+        color: green;
+    }
+}

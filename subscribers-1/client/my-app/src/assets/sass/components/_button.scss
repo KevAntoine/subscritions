@@ -1,0 +1,41 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+.btc {
+    width: 214px;
+    height: 46px;
+    background: #272727;
+    color: $white;
+    
+    margin: 2rem;
+
+
+    /* Shadow */
+    box-shadow: 0px 10px 20px rgba(40, 38, 109, 0.18);
+    border-radius: 5px;
+
+    &--alt {
+        position: absolute;
+        width: 314px;
+        height: 56px;
+        left: 24.83px;
+        top: 628px;
+
+        /* Rookie Pink */
+        border: 1px solid #da3675;
+        box-sizing: border-box;
+        border-radius: 5px;
+    }
+}
+
+.btc-enter {
+    width: 330px;
+    height: 52px;
+    background: #272727;
+    color: $white;
+
+    margin: 3rem;
+    /* Shodow */
+    box-shadow: 0px 10px 20px rgba(55, 59, 66, 0.342);
+    border-radius: 5px;
+}
