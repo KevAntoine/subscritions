@@ -7,6 +7,7 @@ services:
         build: ./server/
         ports: 
             - "4040:4040"
+        env_file: ./env/mongo.env  
     react-app:
         image: react-app
         
