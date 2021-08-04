@@ -17,7 +17,8 @@ phases:
       - echo Building the Docker image...
       #- docker-compose build 
       #- docker-compose up
-      #- docker build -t subscribers-app .
+       - cd server
+       - docker build -t subscribers-app .
       #- docker build -t $REPOSITORY_URI:latest .
       #- docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
@@ -25,7 +26,7 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
       #- docker-compose push
-      - docker push subscribers-app
+      #- docker push subscribers-app
       #- docker push $REPOSITORY_URI:latest
       #- docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
