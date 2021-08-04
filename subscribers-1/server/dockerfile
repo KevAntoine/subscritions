@@ -11,4 +11,6 @@ COPY . .
 
 EXPOSE 4040
 
+env_file: ./env/mongo.env
+
 CMD [ "yarn", "start" ]
